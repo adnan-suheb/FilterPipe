@@ -1,0 +1,44 @@
+<section class="container mt-4">
+  <div class="row d-flex justify-content-center">
+    <div class="form-group mr-4">
+      <input [(ngModel)]="searchVal" (keyup)="onKeyUp($event)" type="text" class="form-control">
+    </div>
+    <div class="form-group">
+      <select class="form-control" (change)="getDropVal($event)">
+        <option value="all" selected>All</option>
+        <option value="name">Filter By Name</option>
+        <option value="country">Filter By Country</option>
+        <option value="year_debut">Filter By Debut Year</option>
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8 offset-md-2">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Sr.no</th>
+            <th>Name</th>
+            <th>Country</th>
+            <th>Debut Year</th>
+            <th>ODI Runs</th>
+            <th>Test Runs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let player of playerArr | filter:searchVal:searchaType; let i=index">
+            <td>{{i+1}}</td>
+            <td>{{player.name}}</td>
+            <td>{{player.country}}</td>
+            <td>{{player.year_debut}}</td>
+            <td>{{player.ODI_runs}}</td>
+            <td>{{player.test_runs}}</td>
+          </tr>
+
+
+        </tbody>
+
+      </table>
+    </div>
+  </div>
+</section>
